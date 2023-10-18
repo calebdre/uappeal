@@ -23,12 +23,12 @@ export type SectionData = {
 	hasExhibits?: boolean
 }
 export const uploadWizardDataFull: SectionData[] = [
-	{
-		title: 'Affirmation',
-		description: `Defendant Memorandum of Law: This document presents the legal arguments and authorities that support the defendant's position.`,
-		tag: 'Defendant Papers',
-		hasExhibits: true
-	},
+	// {
+	// 	title: 'Affirmation',
+	// 	description: `Defendant Memorandum of Law: This document presents the legal arguments and authorities that support the defendant's position.`,
+	// 	tag: 'Defendant Papers',
+	// 	hasExhibits: true
+	// },
 	{
 		title: 'Statement pursuant to CPLR 5531',
 		description: "A concise summary of the case meant for an appellate court, outlining the nature of the case," +
