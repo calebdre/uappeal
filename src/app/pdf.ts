@@ -87,7 +87,7 @@ export function createTableOfContents(tocItems: TOCItem[]) {
 	let currentPage = 1;
 	let currentItemCount = 0;
 
-	tocItems.forEach((item, index) => {
+	tocItems.forEach((item) => {
 		if (currentItemCount >= maxItemsPerPage) {
 			doc.addPage();
 			currentPage++;
@@ -142,9 +142,7 @@ export function createTableOfContents(tocItems: TOCItem[]) {
 	const pdfBlob = doc.output('blob');
 
 	// Create a file from the blob
-	const pdfFile = new File([pdfBlob], 'table-of-contents.pdf', {type: 'application/pdf'});
-
-	return pdfFile;
+	return new File([pdfBlob], 'table-of-contents.pdf', {type: 'application/pdf'});
 }
 
 export const downloadNewPdf = (pdf: File) => {
@@ -167,6 +165,7 @@ export const downloadNewPdf = (pdf: File) => {
 }
 export const getTextFromPDF = async (file: File) => {
 	const fileURL = URL.createObjectURL(file)
+	// @ts-ignore
 	const pdf = await pdfjsLib.getDocument(fileURL).promise
 	let textContent = ''
 
@@ -180,30 +179,26 @@ export const getTextFromPDF = async (file: File) => {
 }
 export const getNumPagesFromPDF = async (file: File) => {
 	const fileURL = URL.createObjectURL(file)
+	// @ts-ignore
 	const pdf = await pdfjsLib.getDocument(fileURL).promise
 	return pdf.numPages as number
 }
 export const combineFiles = async (files: File[]) => {
 	const formData = new FormData();
 	const filesArray = Array.from(files);
-	filesArray.forEach((file, i) => {
+	filesArray.forEach((file) => {
 		formData.append(`file`, file);
 	})
-	try {
-		const response = await fetch('/api/combine', {
-			method: 'POST',
-			body: formData,
-		});
-		if (!response.ok) {
-			throw new Error('Response is not OK');
-		}
-
-		// Create a Blob from the PDF data
-		const blob = await response.blob();
-
-		return new File([blob], 'combined.pdf', {type: 'application/pdf'});
-	} catch (error) {
-		console.error('Error:', error);
-		throw error;
+	const response = await fetch('/api/combine', {
+		method: 'POST',
+		body: formData,
+	});
+	if (!response.ok) {
+		throw new Error('Response is not OK');
 	}
+
+	// Create a Blob from the PDF data
+	const blob = await response.blob();
+
+	return new File([blob], 'combined.pdf', {type: 'application/pdf'});
 };

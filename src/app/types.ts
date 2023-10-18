@@ -96,4 +96,4 @@ export const uploadWizardDataFull: SectionData[] = [
 		description: "Certification Pursuant to 2105: This is a certification by an attorney, or a party if they're not represented by an attorney, assuring that the briefs, records, and appendixes submitted in an appeal are accurate and complete."
 	}
 ]
-export const uploadWizardData = uploadWizardDataFull.slice(0, 2)
+export const uploadWizardData = uploadWizardDataFull
