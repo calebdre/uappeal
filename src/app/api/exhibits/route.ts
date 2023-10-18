@@ -15,23 +15,24 @@ export async function POST(req: Request) {
 		})
 	}
 
-// 	const prompt = `${Anthropic.HUMAN_PROMPT} scan the following legal text for any listed exhibits:
-// <legal text>${text}</legal text> list just the names of exhibits you found${Anthropic.AI_PROMPT}Based on the legal text provided, the following exhibits were listed:`
-// 	const result = await anthropic.completions.create({
-// 		model: 'claude-2',
-// 		prompt,
-// 		max_tokens_to_sample: 2000
-// 	})
-//
-// 	console.log('result', result)
-// 	const exhibits = result.completion
-// 		.trim()
-// 		.split('\n')
-// 		.filter((e) => e !== '')
-// 		.map(exhibit => exhibit.split("-").slice(1).join(" ").trim())
+	const prompt = `${Anthropic.HUMAN_PROMPT} scan the following legal text for any listed exhibits:
+<legal text>${text}</legal text> list just the names of exhibits you found${Anthropic.AI_PROMPT}Based on the legal text provided, the following exhibits were listed:`
+	const result = await anthropic.completions.create({
+		model: 'claude-2',
+		prompt,
+		max_tokens_to_sample: 2000
+	})
+
+	console.log('result', result)
+	const exhibits = result.completion
+		.trim()
+		.split('\n')
+		.filter((e) => e !== '')
+		.map(exhibit => exhibit.split("-").slice(1).join(" ").trim())
 
 	return NextResponse.json({
-		exhibits: ["exhibit 1", "exhibit 2"]
+		// exhibits: ["exhibit 1", "exhibit 2"]
+		exhibits: exhibits
 	},{
 		status: 200
 	})
