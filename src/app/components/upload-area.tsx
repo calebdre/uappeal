@@ -19,7 +19,7 @@ export const UploadArea: React.FC<UploadAreaProps> = ({onClick, isLoading, statu
 	const text = status === 'disabled'
 		? 'Click next to move on'
 		: status === 'file'
-			? 'Click to browse or drag and drop your files'
+			? 'Click to browse for a file'
 			: 'Click on an exhibit below to upload it'
 
 	return (
