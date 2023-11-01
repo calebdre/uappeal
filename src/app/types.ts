@@ -27,7 +27,8 @@ export const uploadWizardDataFull: SectionData[] = [
 	{
 		title: 'Test uploading a document with exhibits',
 		description: "Upload a document with exhibits to verify that this functionality works. After uploading, the" +
-			" app will load and you should see all the exhibits listed below.",
+			" app will load and you should see all the exhibits listed below. Don't move onto the next step." +
+			" Refresh the page to reset the app.",
 		hasExhibits: true
 	},
 	{
