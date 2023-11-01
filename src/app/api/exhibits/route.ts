@@ -23,8 +23,7 @@ export async function POST(req: Request) {
 		max_tokens_to_sample: 5000
 	})
 
-	console.log('result', result)
-	console.log('result', JSON.parse(result.completion.slice(0, -3).trim()))
+	const exhibits = JSON.parse(result.completion.slice(0, -3).trim())
 
 	// let  exhibits = result.completion
 	// 	.split('\n')
@@ -38,8 +37,7 @@ export async function POST(req: Request) {
 	// 	.map(exhibit => exhibit.split("-").slice(1).join(" ").trim())
 
 	return NextResponse.json({
-		exhibits: ["exhibit 1", "exhibit 2"]
-		// exhibits: exhibits
+		exhibits: exhibits
 	},{
 		status: 200
 	})
