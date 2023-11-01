@@ -25,9 +25,9 @@ export type SectionData = {
 }
 export const uploadWizardDataFull: SectionData[] = [
 	{
-		title: 'Statement pursuant to CPLR 5531',
-		description: "A concise summary of the case meant for an appellate court, outlining the nature of the case," +
-			" the court of original jurisdiction, the results of the case, and the key parties involved.",
+		title: 'Test uploading a document with exhibits',
+		description: "Upload a document with exhibits to verify that this functionality works. After uploading, the" +
+			" app will load and you should see all the exhibits listed below.",
 		hasExhibits: true
 	},
 	{
