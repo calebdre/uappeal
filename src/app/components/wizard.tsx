@@ -7,7 +7,7 @@ import {ArrowUturnLeftIcon} from '@heroicons/react/20/solid'
 import {nanoid} from "nanoid"
 import {Exhibit, SectionFile, TOCItem, uploadWizardData} from "@/app/types";
 import {
-	addPageNumbers, chunkPdf,
+	addPageNumbers,
 	combineFiles,
 	createTableOfContents,
 	downloadNewPdf,

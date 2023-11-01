@@ -1,52 +1,5 @@
 'use client'
 import React, {useCallback, useRef, useState} from 'react';
-import Mu from 'muhammara'
-
-const reqiredCourts = [
-	'CPLR 5531',
-	'Copy of Notice',
-	"decision you're appealing",
-	'trial court decision'
-]
-
-
-//  affirmations have exhibits - the only ones that do
-// plaintiff papers + defendant papers
-// defendent/plantiff documents
-// notice of motion -> affirmation -> memoranom of law
-// Transcript of Proceedings,
-
-// Transcript of Proceedings, held on October 22, 2019 ....................................... 163-176
-// Notice of Settlement of Transcript ............................................................................ 177
-// Affirmation of Compliance ....................................................................................... 178
-// Certification Pursuant to CPLR 2105 .......................................................................
-
-// max of 200 pages
-/**
- * UI
- * Carousel wizard animation:
- * https://buildui.com/courses/framer-motion-recipes/carousel-part-1?token=bShjdwoo6LJFrCjg
- *
- * stacked list of files:
- * https://tailwindui.com/components/application-ui/lists/stacked-lists
- *
- * wizard progress bar:
- * https://tailwindui.com/components/application-ui/navigation/steps
- *
- * goal template:
- * https://www.figma.com/file/i0Hk9R7Mv6nF4FnA80JtqB/Multi-step-Form-Figma-Template-%7C-BRIX-Templates-(Community)?type=design&node-id=1-5&mode=design&t=qQAWENadRFbLRdDo-0
- */
-
-const requiredFiles = [
-	"Statement pursuant to CPLR 5531",
-	"Copy of Notice of Appeal, with informational statement",
-	"Copy of the paper appealed from and the underlying decision",
-	"the papers submitted to the trial court starting with the party's papers who made the motion",
-	"transcript of argument or hearing, if any",
-	"Notice of Settlement of Transcript, if any",
-	"Affirmation of Compliance",
-	"Certification Pursuant to 2105",
-]
 
 const FileUpload: React.FC = () => {
 	const [files, setFiles] = useState<File[]>([]);
@@ -56,7 +9,7 @@ const FileUpload: React.FC = () => {
 	const uploadFile = async (files: File[]) => {
 		const formData = new FormData();
 		const filesArray = Array.from(files);
-		filesArray.forEach((file, i) => {
+		filesArray.forEach((file) => {
 			formData.append(`file`, file);
 		})
 
@@ -69,11 +22,10 @@ const FileUpload: React.FC = () => {
 			});
 
 			if (!response.ok) {
-				throw new Error('Response is not OK');
+				console.error('not okay', await response.text())
 			}
 
-			const responseData = await response.json();
-			return responseData;
+			return await response.json();
 		} catch (error) {
 			console.error('Error:', error);
 			throw error;

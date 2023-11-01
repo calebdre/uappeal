@@ -25,17 +25,6 @@ export async function POST(req: Request) {
 
 	const exhibits = JSON.parse(result.completion.slice(0, -3).trim())
 
-	// let  exhibits = result.completion
-	// 	.split('\n')
-	//
-	// console.log('splitted', exhibits)
-	// exhibits = exhibits
-	// 	.map((e) => e.trim())
-	// 	.filter((e) => e !== '')
-	// console.log('filtered', exhibits)
-	// exhibits = exhibits
-	// 	.map(exhibit => exhibit.split("-").slice(1).join(" ").trim())
-
 	return NextResponse.json({
 		exhibits: exhibits
 	},{
