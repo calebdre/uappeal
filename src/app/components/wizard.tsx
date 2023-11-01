@@ -248,7 +248,7 @@ export const Wizard: React.FC<WizardProps> = () => {
 				disabled={
 					currentFile === undefined
 					? false
-					: !(currentSection.hasExhibits && currentExhibits.some(exhibit => exhibit.file === undefined))
+					: !(currentSection.hasExhibits && (currentExhibits && currentExhibits.length > 0 && currentExhibits.some(exhibit => exhibit.file === undefined)))
 				}
 				onChange={e => {
 					if (e.target.files) {
@@ -262,7 +262,7 @@ export const Wizard: React.FC<WizardProps> = () => {
 				status={
 					currentFile === undefined
 					? 'file'
-					: currentSection.hasExhibits && currentExhibits.some(exhibit => exhibit.file === undefined)
+					: currentSection.hasExhibits && (currentExhibits && currentExhibits.length > 0 && currentExhibits.some(exhibit => exhibit.file === undefined))
 						? 'exhibit'
 						: 'disabled'
 
