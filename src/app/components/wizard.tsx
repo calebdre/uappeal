@@ -74,7 +74,7 @@ export const Wizard: React.FC<WizardProps> = () => {
 		: currentFile?.file === undefined
 
 	useEffect(() => {
-		if (exhibitNames && currentExhibits && currentExhibits.length === 0) {
+		if (exhibitNames && currentExhibits && currentExhibits?.length === 0) {
 			setExhibits(prev => {
 				const newExhibits = [...prev]
 				newExhibits[currentStep] = exhibitNames.map(name => ({
