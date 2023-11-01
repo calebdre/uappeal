@@ -84,7 +84,7 @@ export const Wizard: React.FC<WizardProps> = () => {
 				return newExhibits
 			})
 		}
-	}, [currentExhibits?.length, currentStep, exhibitNames])
+	}, [currentExhibits, currentExhibits.length, currentStep, exhibitNames])
 
 	const onFileUploadClick = () => {
 		if (fileInputRef.current) {
@@ -92,13 +92,22 @@ export const Wizard: React.FC<WizardProps> = () => {
 		}
 	}
 
-	const onFileDelete = (index: number) => {
+	const onFileDelete = useCallback((index: number) => {
 		setFiles(prev => {
 			const newFiles = [...prev]
 			newFiles.splice(index, 1)
 			return newFiles
 		})
-	}
+
+
+		setExhibits(prev => {
+			const newExhibits = [...prev]
+			console.log(prev, currentStep)
+			// replace the current exhibits with an empty array
+			newExhibits[currentStep] = []
+			return newExhibits
+		})
+	}, [currentStep])
 
 	const onExhibitFileDelete = (exhibitId: string) => {
 		setExhibits(prev => {

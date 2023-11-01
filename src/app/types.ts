@@ -18,21 +18,17 @@ export type TOCItem = {
 export type SectionData = {
 	title: string,
 	description: string,
+	optional?: boolean
 	instruction?: string,
 	tag?: string,
 	hasExhibits?: boolean
 }
 export const uploadWizardDataFull: SectionData[] = [
-	// {
-	// 	title: 'Affirmation',
-	// 	description: `Defendant Memorandum of Law: This document presents the legal arguments and authorities that support the defendant's position.`,
-	// 	tag: 'Defendant Papers',
-	// 	hasExhibits: true
-	// },
 	{
 		title: 'Statement pursuant to CPLR 5531',
 		description: "A concise summary of the case meant for an appellate court, outlining the nature of the case," +
 			" the court of original jurisdiction, the results of the case, and the key parties involved.",
+		hasExhibits: true
 	},
 	{
 		title: 'Copy of Notice of Appeal, with informational statement',
@@ -43,25 +39,25 @@ export const uploadWizardDataFull: SectionData[] = [
 		description: "Copy of the Paper appealed from and the Underlying Decision: This includes a copy of the decision or order that is being appealed. It gives a comprehensive overview of the lower court's rulings and reasoning."
 	},
 	{
-		title: 'papers submitted to the trial court',
-		instruction: 'starting with the party\'s papers who made the motion',
-		description: "Papers Submitted to the Trial Court: These are all the original documents submitted to the trial court by the party who initiated the motion, including pleadings, motions, and evidence. They provide a full record of the proceedings in the lower court."
-	},
-	{
-		title: 'Notice of Motion',
+		title: 'Defendant\'s Notice of Motion',
 		description: `Defendant Affirmation: This document is a sworn statement by the defendant, laying out their side of the story.`,
 		tag: 'Defendant Papers'
 	},
 	{
-		title: 'Affirmation',
+		title: 'Defendant\s Affirmation',
+		description: `Defendant Affirmation: This document is a sworn statement by the defendant, laying out their side of the story.`,
+		tag: 'Defendant Papers'
+	},
+	{
+		title: 'Defendant\'s Memorandum of Law',
 		description: `Defendant Memorandum of Law: This document presents the legal arguments and authorities that support the defendant's position.`,
 		tag: 'Defendant Papers',
 		hasExhibits: true
 	},
 	{
-		description: `Defendant Notice of Motion: This is a formal document in which the defendant requests the court to make a certain decision or take a certain action.`,
+		description: `Plaintiff Notice of Motion: This is a formal document in which the plaintiff requests the court to make a certain decision or take a certain action.`,
 		title: 'Memorandum of Law',
-		tag: 'Defendant Papers'
+		tag: 'Plaintiff Papers'
 	},
 	{
 		description: `Plaintiff Affirmation: This document is a sworn statement by the plaintiff, laying out their side of the story.`,
@@ -75,13 +71,10 @@ export const uploadWizardDataFull: SectionData[] = [
 		hasExhibits: true
 	},
 	{
-		description: `Plaintiff Notice of Motion: This is a formal document in which the plaintiff requests the court to make a certain decision or take a certain action.`,
-		title: 'Memorandum of Law',
-		tag: 'Plaintiff Papers'
-	},
-	{
 		title: 'Transcript of Proceedings',
-		description: "Transcript of Argument or Hearing: This is a verbatim record of what was said during court proceedings, including arguments made by legal counsel and any decisions or observations made by the judge."
+		description: "Transcript of Argument or Hearing: This is a verbatim record of what was said during court" +
+			" proceedings, including arguments made by legal counsel and any decisions or observations made by the judge.",
+		optional: true
 	},
 	{
 		title: 'Notice of Settlement of Transcript',
